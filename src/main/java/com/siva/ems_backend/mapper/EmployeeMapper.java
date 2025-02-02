@@ -5,7 +5,7 @@ import com.siva.ems_backend.entity.Employee;
 
 //the mapper class provide the methods to convert data from DTO object to domain object(entity) and vice versa
 public class EmployeeMapper {
-    public Employee mapToEmployee (EmployeeDto employeeDtoObj){
+    public static Employee mapToEmployee (EmployeeDto employeeDtoObj){
         return new Employee(
             employeeDtoObj.getId(),
             employeeDtoObj.getFirstName(),
@@ -13,7 +13,7 @@ public class EmployeeMapper {
             employeeDtoObj.getEmail()
         );
     }
-    public EmployeeDto mapToEmployeeDto (Employee employeeObj){
+    public static EmployeeDto mapToEmployeeDto (Employee employeeObj){
         return new EmployeeDto(
             employeeObj.getId(),
             employeeObj.getFirstName(),
