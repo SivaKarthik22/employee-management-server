@@ -3,6 +3,7 @@ package com.siva.ems_backend.service;
 import org.springframework.stereotype.Service;
 import com.siva.ems_backend.dto.EmployeeDto;
 import com.siva.ems_backend.entity.Employee;
+import com.siva.ems_backend.exception.ResourceNotFoundException;
 import com.siva.ems_backend.mapper.EmployeeMapper;
 import com.siva.ems_backend.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
@@ -18,5 +19,16 @@ public class EmployeeService implements EmployeeServiceInterface{
         Employee employeeObj = EmployeeMapper.mapToEmployee(employeeDtoObj);
         Employee savedEmployeeObj = employeeRepositoryInstance.save(employeeObj); //save method persists or merges an entity to the database and returns the saved entity
         return EmployeeMapper.mapToEmployeeDto(savedEmployeeObj);
+    }
+
+    @Override
+    public EmployeeDto findEmployeeById (Long employeeId){
+        Employee resultEmployeeObj = employeeRepositoryInstance.findById(employeeId)
+            .orElseThrow(()-> new ResourceNotFoundException("Employee with " + employeeId + " doesn't exists"));
+        //findById retrieves an entity based on the given primary key and returns Optional of type Entity.
+        //Optional object may or may not contain a non null value.
+        //orElseThrow method gets the value of the Optional if present. if not, it throws the exception given by supplier
+
+        return EmployeeMapper.mapToEmployeeDto(resultEmployeeObj);
     }
 }
