@@ -7,4 +7,6 @@ public interface EmployeeServiceInterface {
     EmployeeDto createEmployee (EmployeeDto employeeDtoObj);
     EmployeeDto findEmployeeById (Long employeeId);
     List<EmployeeDto> findAllEmployees ();
+    EmployeeDto updateEmployee (Long employeeId, EmployeeDto updateEmployeeDtoObj);
+    void removeEmpoyee (Long emploueeId);
 }

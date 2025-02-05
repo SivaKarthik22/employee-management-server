@@ -2,9 +2,11 @@ package com.siva.ems_backend.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +38,17 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeDto>> getAllEmployees(){
         List<EmployeeDto> resultEmployeeDtosList = employeeServiceObj.findAllEmployees();
         return new ResponseEntity<>(resultEmployeeDtosList, HttpStatus.OK);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<EmployeeDto> putEmployee (@PathVariable("id") Long employeeId, @RequestBody EmployeeDto employeeDtoObj){
+        EmployeeDto savedEmployeeDtoObj = employeeServiceObj.updateEmployee(employeeId, employeeDtoObj);
+        return new ResponseEntity<>(savedEmployeeDtoObj, HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee (@PathVariable("id") Long employeeId){
+        employeeServiceObj.removeEmpoyee(employeeId);
+        return ResponseEntity.ok("Employee deleted successfully"); //this method returns a ResponseEntityobject with the HTTP status code 200 
     }
 }

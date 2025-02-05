@@ -44,4 +44,24 @@ public class EmployeeService implements EmployeeServiceInterface{
         }
         return resultEmployeeDtosList;
     }
+
+    @Override
+    public EmployeeDto updateEmployee (Long employeeId, EmployeeDto updateEmployeeDtoObj){
+        Optional<Employee> employeeOptionalObj = employeeRepositoryInstance.findById(employeeId);
+        Employee employeeObj = employeeOptionalObj.orElseThrow(() -> new ResourceNotFoundException("Employee with " + employeeId + " doesn't exists"));
+        
+        employeeObj.setFirstName(updateEmployeeDtoObj.getFirstName());
+        employeeObj.setLastName(updateEmployeeDtoObj.getLastName());
+        employeeObj.setEmail(updateEmployeeDtoObj.getEmail());
+        
+        Employee savedEmployeeObj = employeeRepositoryInstance.save(employeeObj);
+        return EmployeeMapper.mapToEmployeeDto(savedEmployeeObj);
+    }
+
+    @Override
+    public void removeEmpoyee (Long employeeId){
+        Employee employeeObj = employeeRepositoryInstance.findById(employeeId)
+            .orElseThrow(()-> new ResourceNotFoundException("Employee with " + employeeId + " doesn't exists"));
+        employeeRepositoryInstance.deleteById(employeeId);
+    }
 }
