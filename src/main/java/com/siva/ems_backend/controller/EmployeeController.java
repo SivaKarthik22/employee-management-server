@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.siva.ems_backend.dto.EmployeeDto;
 import com.siva.ems_backend.service.EmployeeService;
 import lombok.AllArgsConstructor;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController //indicates that the following class will handle REST API requesta
@@ -29,5 +30,11 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> getEmployeeById (@PathVariable("id") Long employeeId){ //PathVariable is used to extract a value from the URL path and bind it to the method parameter
         EmployeeDto resultEmployeeDtoObj = employeeServiceObj.findEmployeeById(employeeId);
         return new ResponseEntity<>(resultEmployeeDtoObj, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeDto>> getAllEmployees(){
+        List<EmployeeDto> resultEmployeeDtosList = employeeServiceObj.findAllEmployees();
+        return new ResponseEntity<>(resultEmployeeDtosList, HttpStatus.OK);
     }
 }
