@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 
 @AllArgsConstructor
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000") //requests from this url will be allowed to access endpoints in EmployeeController
 @RestController //indicates that the following class will handle REST API requesta
 @RequestMapping("/api/employees") //creates a base url for all the methods within the controller class
 public class EmployeeController {
