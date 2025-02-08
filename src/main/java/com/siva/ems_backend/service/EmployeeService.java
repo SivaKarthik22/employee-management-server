@@ -36,7 +36,7 @@ public class EmployeeService implements EmployeeServiceInterface{
 
     @Override
     public List<EmployeeDto> findAllEmployees(){
-        List<Employee> resultEmployeesList = employeeRepositoryInstance.findAll();
+        List<Employee> resultEmployeesList = employeeRepositoryInstance.findAll(); //returns a List of all entities of a specific type that exist in the database
         List<EmployeeDto> resultEmployeeDtosList = new ArrayList<>();
         for(int i=0; i< resultEmployeesList.size(); i++){
             EmployeeDto employeeDtoObj = EmployeeMapper.mapToEmployeeDto(resultEmployeesList.get(i));
@@ -60,8 +60,7 @@ public class EmployeeService implements EmployeeServiceInterface{
 
     @Override
     public void removeEmpoyee (Long employeeId){
-        Employee employeeObj = employeeRepositoryInstance.findById(employeeId)
-            .orElseThrow(()-> new ResourceNotFoundException("Employee with " + employeeId + " doesn't exists"));
+        employeeRepositoryInstance.findById(employeeId).orElseThrow(()-> new ResourceNotFoundException("Employee with " + employeeId + " doesn't exists"));
         employeeRepositoryInstance.deleteById(employeeId);
     }
 }

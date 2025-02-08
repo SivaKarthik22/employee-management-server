@@ -2,6 +2,7 @@ package com.siva.ems_backend.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 
 @AllArgsConstructor
+@CrossOrigin("http://localhost:3000")
 @RestController //indicates that the following class will handle REST API requesta
 @RequestMapping("/api/employees") //creates a base url for all the methods within the controller class
 public class EmployeeController {
