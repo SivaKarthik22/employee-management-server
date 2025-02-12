@@ -27,7 +27,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //similar to auto-increment attribute in mySQL: generates values automatically for this column 
     private long id;
 
-    @Column(name = "first_name") //Specifies the name of the column used to store the values of this field
+    @Column(name = "first_name", nullable = false) //Specifies the name of the column used to store the values of this field
     private String firstName;
 
     @Column(name = "last_name")
@@ -35,4 +35,22 @@ public class Employee {
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "job_title")
+    private String jobTitle;
+
+    @Column(name = "department")
+    private String department;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "start_date")
+    private String startDate;
+
+    @Column(name = "salary")
+    private String salary;
+
+    @Column(name = "phone_no")
+    private String phone;
 }

@@ -13,7 +13,13 @@ public class EmployeeDto {
     private long id;
     private String firstName;
     private String lastName;
-    private String email; 
+    private String email;
+    private String jobTitle;
+    private String department;
+    private String location;
+    private String startDate;
+    private String salary;
+    private String phone;
 }
 
 //dto class just has getters and setters, it doesn't have any business logic
