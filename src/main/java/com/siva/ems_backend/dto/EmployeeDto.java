@@ -18,8 +18,8 @@ public class EmployeeDto {
     private String department;
     private String location;
     private String startDate;
-    private String salary;
-    private String phone;
+    private int salary;
+    private int phone;
 }
 
 //dto class just has getters and setters, it doesn't have any business logic

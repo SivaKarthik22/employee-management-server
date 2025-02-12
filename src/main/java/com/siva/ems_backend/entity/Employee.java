@@ -49,8 +49,8 @@ public class Employee {
     private String startDate;
 
     @Column(name = "salary")
-    private String salary;
+    private int salary;
 
     @Column(name = "phone_no", nullable = false, unique = true)
-    private String phone;
+    private int phone;
 }
