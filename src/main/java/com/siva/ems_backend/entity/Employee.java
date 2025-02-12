@@ -30,7 +30,7 @@ public class Employee {
     @Column(name = "first_name", nullable = false) //Specifies the name of the column used to store the values of this field
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "email", nullable = false, unique = true)
@@ -51,6 +51,6 @@ public class Employee {
     @Column(name = "salary")
     private String salary;
 
-    @Column(name = "phone_no")
+    @Column(name = "phone_no", nullable = false, unique = true)
     private String phone;
 }
