@@ -46,7 +46,7 @@ public class Employee {
     private String location;
 
     @Column(name = "start_date")
-    private String startDate;
+    private java.sql.Date startDate;
 
     @Column(name = "salary")
     private int salary;

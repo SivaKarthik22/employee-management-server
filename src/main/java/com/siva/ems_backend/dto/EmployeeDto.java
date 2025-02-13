@@ -17,7 +17,7 @@ public class EmployeeDto {
     private String jobTitle;
     private String department;
     private String location;
-    private String startDate;
+    private java.sql.Date startDate;
     private int salary;
     private int phone;
 }
