@@ -53,6 +53,12 @@ public class EmployeeService implements EmployeeServiceInterface{
         employeeObj.setFirstName(updateEmployeeDtoObj.getFirstName());
         employeeObj.setLastName(updateEmployeeDtoObj.getLastName());
         employeeObj.setEmail(updateEmployeeDtoObj.getEmail());
+        employeeObj.setJobTitle(updateEmployeeDtoObj.getJobTitle());
+        employeeObj.setDepartment(updateEmployeeDtoObj.getDepartment());
+        employeeObj.setLocation(updateEmployeeDtoObj.getLocation());
+        employeeObj.setStartDate(updateEmployeeDtoObj.getStartDate());
+        employeeObj.setSalary(updateEmployeeDtoObj.getSalary());
+        employeeObj.setPhone(updateEmployeeDtoObj.getPhone());
         
         Employee savedEmployeeObj = employeeRepositoryInstance.save(employeeObj);
         return EmployeeMapper.mapToEmployeeDto(savedEmployeeObj);

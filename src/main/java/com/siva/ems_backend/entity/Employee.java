@@ -49,8 +49,8 @@ public class Employee {
     private java.sql.Date startDate;
 
     @Column(name = "salary")
-    private int salary;
+    private long salary;
 
     @Column(name = "phone_no", nullable = false, unique = true)
-    private int phone;
+    private long phone;
 }
