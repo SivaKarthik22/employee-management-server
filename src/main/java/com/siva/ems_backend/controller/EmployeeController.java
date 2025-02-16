@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.siva.ems_backend.dto.EmployeeDto;
 import com.siva.ems_backend.service.EmployeeService;
@@ -52,5 +53,11 @@ public class EmployeeController {
     public ResponseEntity<String> deleteEmployee (@PathVariable("id") Long employeeId){
         employeeServiceObj.removeEmpoyee(employeeId);
         return ResponseEntity.ok("Employee deleted successfully"); //this method returns a ResponseEntityobject with the HTTP status code 200 
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<EmployeeDto>> getEmployeesByFilter(@RequestParam String name, @RequestParam List<String> location, @RequestParam List<String> department){
+        List<EmployeeDto> resultEmployeeDtosList = employeeServiceObj.findEmployeeByFilter(name, location, department);
+        return new ResponseEntity<>(resultEmployeeDtosList, HttpStatus.OK);
     }
 }

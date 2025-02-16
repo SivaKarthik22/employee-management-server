@@ -69,4 +69,15 @@ public class EmployeeService implements EmployeeServiceInterface{
         employeeRepositoryInstance.findById(employeeId).orElseThrow(()-> new ResourceNotFoundException("Employee with " + employeeId + " doesn't exists"));
         employeeRepositoryInstance.deleteById(employeeId);
     }
+
+    @Override
+    public List<EmployeeDto> findEmployeeByFilter (String name, List<String> location, List<String> department){
+        List<Employee> resultEmployeesList = employeeRepositoryInstance.findEmployeesByFilter(name, location, department);
+        List<EmployeeDto> resultEmployeeDtosList = new ArrayList<>();
+        for(int i=0; i< resultEmployeesList.size(); i++){
+            EmployeeDto employeeDtoObj = EmployeeMapper.mapToEmployeeDto(resultEmployeesList.get(i));
+            resultEmployeeDtosList.add(employeeDtoObj);
+        }
+        return resultEmployeeDtosList;
+    }
 }
